@@ -3,6 +3,7 @@ import './style.css'
 
 
 const experience = new Experience();
+experience.sizes;
 
 
 

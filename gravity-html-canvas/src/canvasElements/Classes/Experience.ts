@@ -7,9 +7,9 @@ export default class Experience {
     static #instance: Experience;
     public canvas: HTMLCanvasElement = <HTMLCanvasElement>document.querySelector("canvas");
     public context: CanvasRenderingContext2D | null = this.canvas.getContext('2d');
-    public sizes: Sizes;
-    public time: Time;
-    public world: World;
+    public sizes: Sizes | undefined;
+    public time: Time | undefined;
+    public world: World | undefined;
 
 
     constructor() {
@@ -23,11 +23,7 @@ export default class Experience {
 
             this.time = new Time();
             this.sizes = new Sizes();
-
-
             this.world = new World();
-
-
 
             this.time.on("update", () => {
                 this.update();
@@ -42,11 +38,11 @@ export default class Experience {
     public resize() {
         this.canvas.width = window.innerWidth
         this.canvas.height = window.innerHeight;
-        this.world.resize();
+        this.world!.resize();
     }
 
     public update() {
-        this.world.update();
+        this.world!.update();
     }
 
 
